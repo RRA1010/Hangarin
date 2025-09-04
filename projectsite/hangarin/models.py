@@ -8,21 +8,21 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-class Priority(models.Model):
-    p_name = models.CharField(max_length=100)
+class Priority(BaseModel):
+    name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.p_name
+        return self.name
     
-class Category(models.Model):
-    c_name = models.CharField(max_length=100)
+class Category(BaseModel):
+    name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.c_name
+        return self.name
 
-class Task(models.Model):
+class Task(BaseModel):
     title = models.CharField(max_length=100)
-    decription = models.CharField(max_length = 500)
+    description = models.CharField(max_length = 500)
     deadline = models.DateField()
     status = models.CharField(
         max_length=50,
@@ -38,7 +38,7 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
-class Note(models.Model):
+class Note(BaseModel):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     content = models.TextField()
     priority_name = models.CharField(max_length=100)
@@ -46,7 +46,7 @@ class Note(models.Model):
     def __str__(self):
         return self.task
 
-class SubTask(models.Model):
+class SubTask(BaseModel):
     parent_task = models.ForeignKey(Task,on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     status = models.CharField(max_length=150)
