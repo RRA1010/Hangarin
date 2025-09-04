@@ -15,10 +15,10 @@ class Command(BaseCommand):
         fake = Faker()
 
         for _ in range(count):
-            sentence = [fake.sentence(nb_words=5) for _ in range(5)]
-            task_name = ' '.join(sentence)
+            #sentence = [fake.sentence(nb_words=5) ] #for _ in range(5)
+            #task_name = ' '.join(sentence)
             Task.objects.create(
-                title=task_name.title(),
+                title=fake.sentence(nb_words=5),
                 description=fake.paragraph(nb_sentences=3),
                 deadline=timezone.make_aware(fake.date_time_this_month()),
                 status=fake.random_element(elements=["Pending","In Progress,","Completed"]),
