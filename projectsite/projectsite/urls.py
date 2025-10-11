@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from hangarin.views import (HomePageView, 
                             TaskList, TaskCreateView, TaskUpdateView, TaskDeleteView,
-                            SubTaskList, SubTaskCreateView
+                            SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView
 
                             )
 from hangarin import views
@@ -32,6 +32,8 @@ urlpatterns = [
     path('task_list/<pk>/delete', TaskDeleteView.as_view(), name='task-delete'),
     path('subtask_list', SubTaskList.as_view(), name='subtask-list'),
     path('subtask_list/add', SubTaskCreateView.as_view(), name='subtask-add'),
-
+    path('subtask_list/<pk>', SubTaskUpdateView.as_view(), name='subtask-update'),
+    path('subtask_list/<pk>/delete', SubTaskDeleteView.as_view(), name='subtask-delete'),
+    
 
 ]
