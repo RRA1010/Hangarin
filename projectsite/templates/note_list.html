@@ -20,7 +20,7 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title"><h4>List of Priorities</h4></div>
+              <div class="card-title"><h4>List of Notes</h4></div>
               <div class="card-category"></div>
             </div>
             <br />
@@ -34,7 +34,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="pull-right">
-                      <a href="{% url 'priority-add' %}" class="btn btn-success">Add New Priority
+                      <a href="{% url 'note-add' %}" class="btn btn-success">Add New Notes
                       </a>
                     </div>
                   </div>
@@ -45,17 +45,19 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Type</th>
+                        <th scope="col">Task Name</th>
+                        <th scope="col">Note Description</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         {% for object in object_list %}
                       <tr>
-                        <td>{{ object.name }}</td>
+                        <td>{{ object.task }}</td>
+                        <td>{{ object.content }}</td>
                         <td>
-                          <a href="priority_list/{{ object.id }}">Edit</a>
-                          <a href="priority_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                          <a href="note_list/{{ object.id }}">Edit</a>
+                          <a href="note_list/{{ object.id }}/delete" class="text-danger">Delete</a>
                         </td>
                       </tr>
                       {% empty %}

@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Task, SubTask, Priority, Category, Note
+
 class TaskForm(ModelForm):
     class Meta:
         model = Task
@@ -19,4 +20,9 @@ class PriorityForm(ModelForm):
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
+        fields = "__all__"
+
+class NoteForm(ModelForm):
+    class Meta:
+        model = Note
         fields = "__all__"

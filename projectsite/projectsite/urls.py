@@ -21,6 +21,7 @@ from hangarin.views import (HomePageView,
                             SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView,
                             PriorityList, PriorityCreateView, PriorityUpdateView, PriorityDeleteView,
                             CategoryList, CategoryCreateView, CategoryUpdateView, CategoryDeleteView,
+                            NoteList, NoteCreateView, NoteUpdateView, NoteDeleteView
                             )
 from hangarin import views
 
@@ -43,5 +44,9 @@ urlpatterns = [
     path('category_list/add', CategoryCreateView.as_view(), name='category-add'),
     path('category_list/<pk>', CategoryUpdateView.as_view(), name='category-update'),
     path('category_list/<pk>/delete', CategoryDeleteView.as_view(), name='category-delete'),
+    path('note_list', NoteList.as_view(), name='note-list'),
+    path('note_list/add', NoteCreateView.as_view(), name='note-add'),
+    path('note_list/<pk>', NoteUpdateView.as_view(), name='note-update'),
+    path('note_list/<pk>/delete', NoteDeleteView.as_view(), name='note-delete'),
 
 ]
