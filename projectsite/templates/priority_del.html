@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-
 <div class="pc-content">
       <!-- [ breadcrumb ] start -->
       <div class="page-header">
@@ -21,11 +20,23 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Home Page</div>
-              <div class="card-category">Sample Sample</div>
+              <div class="card-title">
+                <h5>Delete Priority</h5></div>
+              <div class="card-category">Page Subtitle</div>
             </div>
-            <div class="card-body">
-              <h5>Hello card</h5>
+
+            <div class="col-md-6">
+              <div class="card-body">
+                <form class="" action="" method="post" novalidate>
+                  <p>Are you sure you want to delete "{{ object }}"?</p>
+                  {% csrf_token %} {% include 'includes/form.html' %}
+                    <div class="form-group">
+                      <div class="col-md-12 col-sm-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -33,5 +44,4 @@
       </div>
       <!-- [ Main Content ] end -->
     </div>
-
 {% endblock %}

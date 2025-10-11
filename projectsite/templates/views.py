@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from hangarin.forms import TaskForm, SubTaskForm, PriorityForm
+from hangarin.forms import TaskForm, SubTaskForm, PriorityForm, 
 from django.urls import reverse_lazy
 
 from hangarin.models import Task, SubTask, Priority
@@ -78,7 +78,7 @@ class PriorityUpdateView(UpdateView):
 
 class PriorityDeleteView(DeleteView):
     model = Priority
-    template_name = 'priority_del.html'
+    template_name = 'subtask_del.html'
     success_url = reverse_lazy('priority-list')
 
 

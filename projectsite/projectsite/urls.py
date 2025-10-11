@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from hangarin.views import (HomePageView, 
                             TaskList, TaskCreateView, TaskUpdateView, TaskDeleteView,
-                            SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView
+                            SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView,
+                            PriorityList, PriorityCreateView, PriorityUpdateView, PriorityDeleteView,
 
                             )
 from hangarin import views
@@ -34,6 +35,10 @@ urlpatterns = [
     path('subtask_list/add', SubTaskCreateView.as_view(), name='subtask-add'),
     path('subtask_list/<pk>', SubTaskUpdateView.as_view(), name='subtask-update'),
     path('subtask_list/<pk>/delete', SubTaskDeleteView.as_view(), name='subtask-delete'),
-    
+    path('priority_list', PriorityList.as_view(), name='priority-list'),
+    path('priority_list/add', PriorityCreateView.as_view(), name='priority-add'),
+    path('priority_list/<pk>', PriorityUpdateView.as_view(), name='priority-update'),
+    path('priority_list/<pk>/delete', PriorityDeleteView.as_view(), name='priority-delete'),
+
 
 ]
