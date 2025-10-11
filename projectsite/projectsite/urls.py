@@ -16,13 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hangarin.views import HomePageView, TaskList, TaskCreateView, TaskUpdateView
+from hangarin.views import (HomePageView, 
+                            TaskList, TaskCreateView, TaskUpdateView, TaskDeleteView,
+                            SubTaskList, SubTaskCreateView
+
+                            )
 from hangarin import views
 
-urlpatterns = [
+urlpatterns = [ 
     path('admin/', admin.site.urls),
     path('', views.HomePageView.as_view(), name='home'),
     path('task_list', TaskList.as_view(), name='task-list'),
     path('task_list/add', TaskCreateView.as_view(), name='task-add'),
-    path('task_list/<pk>', TaskUpdateView.as_view(), name='organization-update'),
+    path('task_list/<pk>', TaskUpdateView.as_view(), name='task-update'),
+    path('task_list/<pk>/delete', TaskDeleteView.as_view(), name='task-delete'),
+    path('subtask_list', SubTaskList.as_view(), name='subtask-list'),
+    path('subtask_list/add', SubTaskCreateView.as_view(), name='subtask-add'),
+
+
 ]

@@ -20,7 +20,7 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title"><h4>List of Task</h4></div>
+              <div class="card-title"><h4>List of SubTasks</h4></div>
               <div class="card-category"></div>
             </div>
             <br />
@@ -34,7 +34,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="pull-right">
-                      <a href="{% url 'task-add' %}" class="btn btn-success">Add New Task
+                      <a href="{% url 'subtask-add' %}" class="btn btn-success">Add Subtask
                       </a>
                     </div>
                   </div>
@@ -45,22 +45,18 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Title</th>
+                        <th scope="col">Main Task</th>
+                        <th scope="col">Subtask</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Deadline</th>
-                        <th scope="col">Priority</th>
-                        <th scope="col">Category</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         {% for object in object_list %}
                       <tr>
+                        <td>{{ object.parent_task }}</td>
                         <td>{{ object.title }}</td>
                         <td>{{ object.status }}</td>
-                        <td>{{ object.deadline }}</td>
-                        <td>{{ object.priority }}</td>
-                        <td>{{ object.category }}</td>
                         <td>
                           <a href="task_list/{{ object.id }}">Edit</a>
                           <a href="task_list/{{ object.id }}/delete" class="text-danger">Delete</a>
