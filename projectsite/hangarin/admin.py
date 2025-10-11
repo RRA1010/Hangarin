@@ -8,7 +8,7 @@ class SubTaskInline(admin.TabularInline):
     extra = 1
     fields = ("title", "status")
     show_change_link = True
-
+    
 class NoteInline(admin.StackedInline):
     model = Note
     extra = 1

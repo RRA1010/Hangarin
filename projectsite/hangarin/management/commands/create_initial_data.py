@@ -7,9 +7,9 @@ class Command(BaseCommand):
     help = 'Create initial data for the application'
 
     def handle(self, *args, **kwargs):
-        self.create_task(20)
-        self.create_notes(10)
-        self.create_subtask(5)
+        self.create_task(100)
+        self.create_notes(50)
+        self.create_subtask(100)
     
     def create_task(self, count):
         fake = Faker()
@@ -21,7 +21,7 @@ class Command(BaseCommand):
                 title=fake.sentence(nb_words=5),
                 description=fake.paragraph(nb_sentences=3),
                 deadline=timezone.make_aware(fake.date_time_this_month()),
-                status=fake.random_element(elements=["Pending","In Progress,","Completed"]),
+                status=fake.random_element(elements=["Pending","In Progress","Completed"]),
                 category=Category.objects.order_by('?').first(),
                 priority=Priority.objects.order_by('?').first(),
                 )
@@ -47,7 +47,7 @@ class Command(BaseCommand):
             SubTask.objects.create(
                 parent_task=Task.objects.order_by('?').first(),
                 title=fake.sentence(nb_words=5),
-                status=fake.random_element(elements=["Pending","In Progress,","Completed"])
+                status=fake.random_element(elements=["Pending","In Progress","Completed"])
             )
         self.stdout.write(self.style.SUCCESS(
             'Initial data for sub-task created successfully.'

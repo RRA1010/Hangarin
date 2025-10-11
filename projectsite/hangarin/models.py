@@ -36,7 +36,7 @@ class Task(BaseModel):
         max_length=50,
         choices=[("Pending","Pending"),
                  ("In Progress", "In Progress"),
-                 ("Completed","Completed")
+                 ("Completed","Completed"),
                  ],
                  default="Pending"
                  )

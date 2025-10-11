@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h4 class="m-b-10">Home</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">List of Task</div>
+              <div class="card-category">Page Subtitle</div>
+            </div>
+            <div class="card-body">
+              <div class="card-body table-border-style">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Deadline</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Category</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list %}
+                      <tr>
+                        <td>{{ object.title }}</td>
+                        <td>{{ object.status }}</td>
+                        <td>{{ object.deadline }}</td>
+                        <td>{{ object.priority }}</td>
+                        <td>{{ object.category }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  {% include 'includes/pagination.html' %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+{% endblock %}
