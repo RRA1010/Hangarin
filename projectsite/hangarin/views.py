@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from hangarin.forms import TaskForm, SubTaskForm, PriorityForm, CategoryForm, NoteForm
 from django.urls import reverse_lazy
+from django.db.models import Q
+from django.utils import timezone
 
+from hangarin.forms import TaskForm, SubTaskForm, PriorityForm, CategoryForm, NoteForm
 from hangarin.models import Task, SubTask, Priority, Category, Note
 
 # Create your views here.
@@ -17,6 +19,28 @@ class TaskList(ListView):
     context_object_name = 'task'
     template_name = 'task_list.html'
     paginate_by = 10
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(deadline__icontains=query) |
+                Q(status__icontains=query) |
+                Q(category__icontains=query) |
+                Q(priority__icontains=query)
+                )
+        return qs
+    
+    def get_ordering(self):
+        allowed = ["title", "status","deadline", "category__name", "priority__name"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by
+        return "title"
 
 class TaskCreateView(CreateView):
     model = Task
@@ -41,6 +65,24 @@ class SubTaskList(ListView):
     template_name = 'subtask_list.html'
     paginate_by = 10
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(title__icontains=query) |
+                Q(status__icontains=query)
+                )
+        return qs
+    
+    def get_ordering(self):
+        allowed = ["title","status"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by
+        return "parent_task__title"
+
 class SubTaskCreateView(CreateView):
     model = SubTask
     form_class = SubTaskForm
@@ -63,6 +105,14 @@ class PriorityList(ListView):
     context_object_name = 'priority'
     template_name = 'priority_list.html'
     paginate_by = 10
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(name__icontains=query)
+        return qs
 
 class PriorityCreateView(CreateView):
     model = Priority
@@ -109,6 +159,24 @@ class NoteList(ListView):
     context_object_name = 'note'
     template_name = 'note_list.html'
     paginate_by = 10
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(task__title__icontains=query) |
+                Q(content__icontains=query)
+                )
+        return qs
+    
+    def get_ordering(self):
+        allowed = ["task__title", "content"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by
+        return "task__title"
 
 class NoteCreateView(CreateView):
     model = Note

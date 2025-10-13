@@ -26,9 +26,9 @@
             <br />
                 <div class="col-md-12 row">
                   <div class="col-md-6">
-                    <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                      <div class="datatable-search sm-12">
-                          <input type="text" class="form-control" placeholder="Search here..."/>
+                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'priority-list' %}">
+                      <div class="datatable-search sm-12 ms-3">
+                          <input type="text" class="form-control" placeholder="Search here..." name="q"/>
                       </div>
                     </form>
                   </div>

@@ -26,9 +26,9 @@
             <br />
                 <div class="col-md-12 row">
                   <div class="col-md-6">
-                    <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                      <div class="datatable-search sm-12">
-                          <input type="text" class="form-control" placeholder="Search here..."/>
+                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'task-list' %}">
+                      <div class="datatable-search sm-12 ms-3">
+                          <input type="text" placeholder="Search here..." class="form-control"  name="q"/>
                       </div>
                     </form>
                   </div>
@@ -38,6 +38,25 @@
                       </a>
                     </div>
                   </div>
+                </div>
+                <div class="col-md-12 sm-12 ms-4">
+                  <form method="get" class="row g-4 align-items-center">
+                    <div class="col-auto">
+                      <label for="smallSelect" class="col-form-label">Sort by</label>
+                    </div>
+                    <div class="col-auto">
+                      <select class="form-select form-select-sm" id="smallSelect" name="sort_by">
+                        <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Title</option>
+                        <option value="status" {% if request.GET.sort_by == "status" %}selected{% endif %}>Status</option>
+                        <option value="deadline" {% if request.GET.sort_by == "deadline" %}selected{% endif %}>Deadline</option>
+                        <option value="category__name" {% if request.GET.sort_by == "category__name" %}selected{% endif %}>Category</option>
+                        <option value="priority__name" {% if request.GET.sort_by == "priority__name" %}selected{% endif %}>Priority</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-primary btn-sm">Sort</button>
+                    </div>
+                  </form>
                 </div>
             <div class="card-body">
               <div class="card-body table-border-style">

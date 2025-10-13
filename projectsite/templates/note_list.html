@@ -27,7 +27,7 @@
                 <div class="col-md-12 row">
                   <div class="col-md-6">
                     <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                      <div class="datatable-search sm-12">
+                      <div class="datatable-search sm-12 ms-3">
                           <input type="text" class="form-control" placeholder="Search here..."/>
                       </div>
                     </form>
@@ -38,6 +38,22 @@
                       </a>
                     </div>
                   </div>
+                </div>
+                <div class="col-md-12 sm-12 ms-4">
+                  <form method="get" class="row g-4 align-items-center">
+                    <div class="col-auto">
+                      <label for="smallSelect" class="col-form-label">Sort by</label>
+                    </div>
+                <div class="col-auto">
+                      <select class="form-select form-select-sm" id="smallSelect" name="sort_by">
+                        <option value="task__title" {% if request.GET.sort_by == "task__title" %}selected{% endif %}>Task</option>
+                        <option value="content" {% if request.GET.sort_by == "content" %}selected{% endif %}>Content</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-primary btn-sm">Sort</button>
+                    </div>
+                  </form>
                 </div>
             <div class="card-body">
               <div class="card-body table-border-style">
