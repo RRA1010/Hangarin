@@ -10,10 +10,14 @@ from hangarin.forms import TaskForm, SubTaskForm, PriorityForm, CategoryForm, No
 from hangarin.models import Task, SubTask, Priority, Category, Note
 
 # Create your views here.
-class HomePageView(ListView):
+class HomePageView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'home'
+    
+    login_url = 'accounts/login'
+    redirect_name = 'redirect_to'
     template_name = "home.html"
+
 
     def get_context_data(self, **kwargs):
 

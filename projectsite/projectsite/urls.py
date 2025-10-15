@@ -29,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pwa.urls')),
     path('accounts/',include('allauth.urls')),
+    path('accounts/',include('django.contrib.auth.urls')),
     path('', views.HomePageView.as_view(), name='home'),
     path('task_list', TaskList.as_view(), name='task-list'),
     path('task_list/add', TaskCreateView.as_view(), name='task-add'),
