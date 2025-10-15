@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from hangarin.forms import TaskForm, SubTaskForm, PriorityForm, CategoryForm, NoteForm
 from hangarin.models import Task, SubTask, Priority, Category, Note
@@ -13,6 +14,31 @@ class HomePageView(ListView):
     model = Task
     context_object_name = 'home'
     template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context["total_tasks"] = Task.objects.count()
+        context["total_subtasks"] = SubTask.objects.count()
+
+        today = timezone.localdate()
+        count_due_today = (
+            Task.objects.filter(
+                deadline=today
+            ).count()
+        )
+
+        count_overdue = (
+            Task.objects.filter(
+                deadline__lt=today
+                )
+                .exclude(status='Completed')
+                .count()
+        )
+
+        context["due_today"] = count_due_today
+        context["overdue"] = count_overdue
+        return context
 
 class TaskList(ListView):
     model = Task

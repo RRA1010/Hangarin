@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8i73*f2asa#24jz4z3(0&3@#2=4h^1(_^o21*e^bsx8t94ka6x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hangarin1010.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','hangarin1010.pythonanywhere.com']
 
 # Application definition
 
@@ -48,12 +48,13 @@ INSTALLED_APPS = [
     'widget_tweaks',
 ]
 
-SITE_ID = 2
+SITE_ID = 3
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

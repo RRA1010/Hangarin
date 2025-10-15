@@ -72,8 +72,8 @@
                         <td>{{ object.task }}</td>
                         <td>{{ object.content }}</td>
                         <td>
-                          <a href="note_list/{{ object.id }}">Edit</a>
-                          <a href="note_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                          <a href="note_list/{{ object.id }}"><button class="btn btn-success">Edit</button></a>
+                          <a href="note_list/{{ object.id }}/delete"><button class="btn btn-danger">Delete</button></a>
                         </td>
                       </tr>
                       {% empty %}

@@ -46,7 +46,7 @@
                     </div>
                 <div class="col-auto">
                       <select class="form-select form-select-sm" id="smallSelect" name="sort_by">
-                        <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Subtask</option>
+                        <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Name</option>
                         <option value="status" {% if request.GET.sort_by == "status" %}selected{% endif %}>Status</option>
                       </select>
                     </div>
@@ -74,8 +74,8 @@
                         <td>{{ object.parent_task }}</td>
                         <td>{{ object.status }}</td>
                         <td>
-                          <a href="subtask_list/{{ object.id }}">Edit</a>
-                          <a href="subtask_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                          <a href="subtask_list/{{ object.id }}"><button type="button" class="btn btn-success">Edit</button></a>
+                          <a href="subtask_list/{{ object.id }}/delete"><button type="button" class="btn btn-danger">Delete</button></a>
                         </td>
                       </tr>
                       {% empty %}
