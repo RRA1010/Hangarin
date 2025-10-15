@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8i73*f2asa#24jz4z3(0&3@#2=4h^1(_^o21*e^bsx8t94ka6x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','hangarin1010.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1','hangarin1010.pythonanywhere.com', 'localhost']
 
 # Application definition
 
@@ -48,7 +48,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
 ]
 
-SITE_ID = 3
+#   SITE_ID = 3
+if "pythonanywhere" in socket.gethostname():
+    SITE_ID = 4
+else:
+    SITE_ID = 3
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
