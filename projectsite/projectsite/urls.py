@@ -51,5 +51,4 @@ urlpatterns = [
     path('note_list/add', NoteCreateView.as_view(), name='note-add'),
     path('note_list/<pk>', NoteUpdateView.as_view(), name='note-update'),
     path('note_list/<pk>/delete', NoteDeleteView.as_view(), name='note-delete'),
-
 ]

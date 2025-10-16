@@ -61,7 +61,7 @@ class SubTask(BaseModel):
         choices=[("Pending","Pending"),
                  ("In Progress", "In Progress"),
                  ("Completed","Completed")
-                 ],
+                 ], 
                  default="Pending"
                  )
 

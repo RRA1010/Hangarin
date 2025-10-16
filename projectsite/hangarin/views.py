@@ -39,7 +39,7 @@ class HomePageView(LoginRequiredMixin, ListView):
                 .exclude(status='Completed')
                 .count()
         )
-
+        
         context["due_today"] = count_due_today
         context["overdue"] = count_overdue
         return context
@@ -60,8 +60,8 @@ class TaskList(ListView):
                 Q(description__icontains=query) |
                 Q(deadline__icontains=query) |
                 Q(status__icontains=query) |
-                Q(category__icontains=query) |
-                Q(priority__icontains=query)
+                Q(category__name__icontains=query) |
+                Q(priority__name__icontains=query)
                 )
         return qs
     
