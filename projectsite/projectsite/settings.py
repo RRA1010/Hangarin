@@ -178,22 +178,22 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
 PWA_APP_ICONS = [
     {
-        'src': '/static/images/icons/icon-192.png',
-        'sizes': '192x192'
+        'src': '/static/images/img-navbar-card.png',
+        'sizes': '180x124'
     },
     {
-        'src': '/static/images/icons/icon-512.png',
-        'sizes': '512x512'
+        'src': '/static/images/img-navbar-card.png',
+        'sizes': '180x124'
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/images/icons/icon-512.png',
-        'sizes': '512x512'
+        'src': '/static/images/img-navbar-card.png',
+        'sizes': '180x124'
     },
     {
-        'src': '/static/images/icons/icon-512.png',
-        'sizes': '512x512'
+        'src': '/static/images/img-navbar-card.png',
+        'sizes': '180x124'
     }
 ]
 PWA_APP_DIR = 'ltr'
